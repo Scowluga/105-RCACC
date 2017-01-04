@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.scowluga.android.rcacc.Join.JoinFrag">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                        <TextView
+                        android:text="Hours of Operation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/join1"
+                        style="@style/largeText"
+                        />
+
+                        <TextView
+                            android:text="Tuesday Evening, 6:30PM to 9:00PM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/join11"
+                            style="@style/accentText"
+                            android:gravity="left"
+                            android:layout_margin="10dp"
+                            />
+
+                        <TextView
+                            android:text="@string/join_info1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/infoText"
+                            android:id="@+id/join2"
+                            android:layout_margin="10dp"/>
+
+                        <TextView
+                            android:text="Our Address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/join3"
+                            style="@style/titleText"
+                            android:gravity="center_horizontal"/>
+                        <TextView
+                            android:text="@string/join_info2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/join4"
+                            android:layout_margin="10dp"
+                            style="@style/infoText"
+                            android:gravity="center_horizontal"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:id="@+id/mapFAB"
+
+            app:srcCompat="@drawable/directionedit" />
+    </RelativeLayout>
+
+
+</FrameLayout>

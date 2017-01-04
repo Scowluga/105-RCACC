@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cap_normal"
+        android:id="@+id/history_picture" />
+
+    <TextView
+        android:text="@string/history_norm1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/titleText"/>
+
+    <TextView
+        android:text="@string/history_norm2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/infoText"
+        android:gravity="center"/>
+
+    <Button
+        android:text="Back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/history_back"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorAccent"/>
+</LinearLayout>

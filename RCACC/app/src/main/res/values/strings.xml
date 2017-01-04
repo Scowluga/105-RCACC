@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">105 RCACC</string>
+
+    <!--ACTUAL STRINGS FOR STORING DISPLAY-->
+    <string name="action_settings">Settings</string>
+
+    <string name="history_title">This Corps was formed 1 January 1975 and designated the 7th Regiment Royal Canadian Artillery Cadet Corps. Its co-sponsors were the Kinsmen Club of Streetsville and the 7th Toronto Regiment R.C.A. It was affiliated with the 7th Toronto Regiment Royal Canadian Artillery (M).</string>
+
+    <string name="history_sub">Effective 26 May 1987, 105 had a new sponsor – John Rielly Transportation (Streetsville Army Cadet Committee) and a new Co-Sponsor – The Kinsmen Club of Streetsville. The Royal Canadian Legion Branch 139, Streetsville became the sponsor in 1990 and has since been supporting us to the present times. Our affiliated unit, 7th Toronto Regiment, Royal Canadian Artillery is a reserve artillery regiment located at Moss Park Armoury, Toronto, Ont. The Regiment is rich in history dating back to pre-confederation. It’s oldest battery, 9th Battery, has recently celebrated the 150th affirmation of the Freedom of the City Parade, re-affirming the legal right for 7th Toronto Regiment, RCA to have weapons, bayonets fixed, and drums beating in the City of Toronto.
+    </string>
+
+    <string name="absence_info">If you are unable to come on a Tuesday night or any other time you are to be at cadets, please fill out the form below.  By filling out the form, you do not need to call the cadet centre.</string>
+
+    <string name="absence_warning">**Any continuous absence of more than 4 weeks will require a Leave of Absence which can only be applied for directly with the CO.  Any absence of more than 4 weeks will automatically remove you from 105 cadets and if you come back, you must re-apply.</string>
+
+
+    <!-- Other for running of app -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="join_info1">New members are welcomed to join us on one of our Tuesday training nights. You will receive an orientation of the Royal Canadian Army Cadets program.
+
+</string>
+    <string name="join_info2">Streetsville Cadet Centre\n170 Church St.\nMississauga, ON</string>
+    <string name="history_cap1">“UBIQUE”</string>
+    <string name="history_cap2">Everywhere </string>
+    <string name="history_cap3">“QUO FAS ET GLORIA DUCUNT”</string>
+    <string name="history_cap4">Whither Right and Glory Lead</string>
+
+    <string name="history_norm1">“ACER ACERPORI”</string>
+    <string name="history_norm2">As the Maple, so the Sapling</string>
+    <string name="teams_description">The 105 cadet corps provides a variety of opportunities for cadets of all interests to participate in teams. Teams usually meet on Thursday evenings. If you\'re interested, please talk to your officer!</string>
+    <string name="transition">transition</string>
+    <string name="transition_title">title</string>
+
+
+</resources>
