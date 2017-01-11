@@ -4,6 +4,7 @@ package com.scowluga.android.rcacc.Info.Staff;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static android.content.Context.MODE_APPEND;
+import static android.content.Context.MODE_PRIVATE;
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 
 /**
@@ -53,16 +55,17 @@ public class LoginFrag extends Fragment {
 
         boolean success = loginSuccess(view);
         if (success) {
-            Fragment frag = new StaffSelectFrag();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                    .addToBackStack(TAGFRAGMENT)
-                    .commit();
-            MainActivity.toolbar.setTitle("Staff Portal");
+            openStaff(getFragmentManager());
+
+            getActivity().getSharedPreferences("STAFFLOGIN", MODE_PRIVATE).edit()
+                    .putBoolean("isStaff", true).apply();
+            MainActivity.isStaff = true;
         }
     }
     private boolean loginSuccess(View v) {
-        List<String> validKeys = new ArrayList<>(Arrays.asList("111", "222", "staffpass"));
+        // TODO: Create own login passwords
+        List<String> validKeys = new ArrayList<>(
+                Arrays.asList("Dummy_login", "These are not the actual passwords"));
         EditText et = (EditText)getActivity().findViewById(R.id.loginKey);
         if (et.getText().toString().equals("")) {
             et.setError("No password entered");
@@ -72,5 +75,14 @@ public class LoginFrag extends Fragment {
         }
         et.setError("Wrong password");
         return false;
+    }
+
+    public static void openStaff(FragmentManager fm) {
+        Fragment frag = new StaffSelectFrag();
+        fm.beginTransaction()
+                .replace(R.id.frag_layout, frag, TAGFRAGMENT)
+                .addToBackStack(TAGFRAGMENT)
+                .commit();
+        MainActivity.toolbar.setTitle("Staff Portal");
     }
 }

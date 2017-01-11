@@ -9,10 +9,10 @@
         android:layout_height="@dimen/childIconSize"
         app:srcCompat="@drawable/phone"
         android:id="@+id/child_image"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
         android:layout_gravity="center_vertical"
         />
     <TextView

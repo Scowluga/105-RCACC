@@ -9,5 +9,6 @@
         android:icon="@drawable/refresh"
         app:showAsAction="ifRoom"
         android:onClick="refreshButton"
+        android:visible="false"
         ></item>
 </menu>

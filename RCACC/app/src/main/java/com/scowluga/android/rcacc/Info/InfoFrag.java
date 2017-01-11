@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.Main.FirstRun;
+import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.Main.OptionProvider;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
@@ -41,11 +42,15 @@ public class InfoFrag extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment frag = new LoginFrag();
-                getFragmentManager().beginTransaction()
-                        .replace(frag_layout, frag, TAGFRAGMENT)
-                        .addToBackStack(TAGFRAGMENT)
-                        .commit();
+                if (MainActivity.isStaff) {
+                    LoginFrag.openStaff(getFragmentManager());
+                } else {
+                    Fragment frag = new LoginFrag();
+                    getFragmentManager().beginTransaction()
+                            .replace(frag_layout, frag, TAGFRAGMENT)
+                            .addToBackStack(TAGFRAGMENT)
+                            .commit();
+                }
             }
         });
 

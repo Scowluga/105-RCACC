@@ -25,7 +25,11 @@ public class FirstRun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zzz_first_run);
 
-        if (!wifiOn(getApplicationContext())) {
+        //first run. Default to true (so first time it runs)
+        boolean first = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirst", true);
+
+        if (first && !wifiOn(getApplicationContext())) {
             AlertDialog alertDialog = new AlertDialog.Builder(FirstRun.this).create();
             alertDialog.setTitle("Error");
             alertDialog.setIcon(R.drawable.logocadets);
@@ -41,7 +45,7 @@ public class FirstRun extends AppCompatActivity {
 
         } else {
             // Creating async task
-            // Paramters (don't need) - ProgressBar (don't need) - Result
+            // Parameters (don't need) - ProgressBar (don't need) - Result
             AsyncTask task = new ProgressTask(getApplicationContext(), FirstRun.this).execute();
         }
     }
@@ -69,6 +73,10 @@ public class FirstRun extends AppCompatActivity {
                 // Synchronize
                 SyncUtils.CreateSyncAccount(getApplicationContext());
                 SyncUtils.TriggerRefresh();
+
+                // It is no longer the first run (successfully set up local database)
+                getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                        .putBoolean("isFirst", false).apply();
 
                 // Start activity because successfuly set up
                 Intent intent = new Intent(FirstRun.this, MainActivity.class);

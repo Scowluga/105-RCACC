@@ -28,12 +28,12 @@
 
     <!--Size of Group Icon-->
     <dimen name="groupIconSize">
-        38dp
+        32dp
     </dimen>
 
     <!--Size of Child Icon-->
     <dimen name="childIconSize">
-        25dp
+        24dp
     </dimen>
 
     <!--Expandable (navigation drawer)-->
@@ -78,10 +78,10 @@
     </style>
 
     <style name="groupText">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="childText">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">19sp</item>
     </style>
 </resources>

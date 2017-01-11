@@ -39,14 +39,17 @@ public class Home extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment frag = new LoginFrag();
-                getFragmentManager().beginTransaction()
-                        .replace(frag_layout, frag, TAGFRAGMENT)
-                        .addToBackStack(TAGFRAGMENT)
-                        .commit();
+                if (MainActivity.isStaff) {
+                    LoginFrag.openStaff(getFragmentManager());
+                } else {
+                    Fragment frag = new LoginFrag();
+                    getFragmentManager().beginTransaction()
+                            .replace(frag_layout, frag, TAGFRAGMENT)
+                            .addToBackStack(TAGFRAGMENT)
+                            .commit();
+                }
             }
         });
-
         Button contact = (Button)v.findViewById(R.id.infoContect);
         contact.setOnClickListener(new View.OnClickListener() {
             @Override

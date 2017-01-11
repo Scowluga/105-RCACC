@@ -2,16 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/LayoutMargins"
-    tools:context="com.scowluga.android.rcacc.Message.MessageDisplay">
+    tools:context="com.scowluga.android.rcacc.Message.MessageDisplay"
+    style="@style/LayoutMargins">
 
-    <ListView
-        android:layout_marginTop="@dimen/marginOut"
-        android:id="@+id/message_list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:listSelector="@android:color/transparent">
+        android:layout_height="match_parent">
 
-    </ListView>
-
+        <ListView
+            android:layout_marginTop="@dimen/marginOut"
+            android:id="@+id/message_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:listSelector="@android:color/transparent">
+        </ListView>
+    </RelativeLayout>
 </FrameLayout>

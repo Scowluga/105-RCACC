@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity
 
     public static boolean debugger = false;
 
+    public static boolean isStaff;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,16 +63,20 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         //------------ initialize at the news fragment
         Fragment frag = new Home();
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                .addToBackStack(TAGFRAGMENT)
                 .commit();
 
         getSupportActionBar().setTitle("Home");
         // -------------
+
+        // Staff User Checks
+        isStaff = getSharedPreferences("STAFFLOGIN", MODE_PRIVATE)
+                .getBoolean("isStaff", false);
+        //
 
         // getting reference to refresh
         expList = (ExpandableListView) findViewById(R.id.expList);
@@ -197,6 +204,7 @@ public class MainActivity extends AppCompatActivity
     public static void closeDrawer() {
         drawer.closeDrawer(Gravity.LEFT);
     }
+
     @Override
     public void onBackPressed() {
         try {
