@@ -3,15 +3,32 @@
 <p>If you haven't already, download the app <a href="https://play.google.com/store/apps/details?id=com.scowluga.android.rcacc&hl=en" target="_blank">here.</a></p>
 
 <h2>Conception</h2>
-<p>From when I joined, at age 13, cadets has had a profound effect on my life, helping me grow and develop as a leader. </p>
+<p>From the day I joined, cadets has had a profound effect on my life, helping me grow and develop as a leader. </p>
 <p>In grade 11, I decided to apply my android development skills to help the cadet community, by creating a application that would help the corps run, communicate, and grow. </p>
 <p>Cue the 105 RCACC: an app I decided to create that would not only increase the community presence of the corps through technology, but also help parents and cadets get important information-fast!</p>
 
-<h2>Functionality and Code</h2>
-<p>This application uses the DrawerLayout and NavigationView provided by Android Studio. Navigation changes are managed through the replacing of fragments.</p>
-<p>While there are a number of fragments, including the corps calendar, many Google forms, and information about the corps, the most important is the 'News' section</p>
-<p>This section is synchronized across all devices through the use of SyncAdapter and ContentProvider, and the cloud storage of Google Drive.</p>
-<p>Messages can be modified by staff, and these changes are transferred to other devices through a SQL database.</p>
+<h2>Features</h2>
+<i>-- News --</i>
+Keep up to date with a list of synchronized, real time messages from your officers and senior cadets. Refreshable through Google Drive database connection. 
+
+<i>-- Calendar --</i>
+View detailed information on all events through the 105 Calendar. See timings, locations, permission forms, and much more! 
+
+<i>-- About 105 -- </i>
+Learn more about the 105 RCACC through 3 individual sections: 
+
+- Home: a beautiful slideshow featuring many of 105's pictures, and general information about the app. 
+- History: learn about the genesis of 105, and see pictures regarding our cap brass! 
+- Teams: learn about the 4 major teams at 105: drill, band, shooting, and orienteering. 
+
+<i>-- Resources -- </i>
+Need to report an absence? How about summer training applications? Get quick access to important cadet resources, without having to search online. 
+
+<i>-- Find Us Online -- </i>
+Interested? Want to learn more? Come find us on Facebook, our personal 105 website, and Instagram. 105 is everywhere on the web! 
+
+<i>-- Join -- </i>
+If you're looking to join, you've made the right decision! View our hours, address, and a map on how to get to our location.
 
 <h2>Conclusion</h2>
 <p>Thank you to everybody that helped make this application possible. Special thanks to my father, and Mr. Chuu of 105.</p>
