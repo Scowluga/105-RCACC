@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,9 @@ import com.scowluga.android.rcacc.sync.SyncUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 
@@ -32,6 +36,7 @@ import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 public class MessageDisplay extends Fragment {
 
     public static List<Message> messageList;
+    public static SwipeRefreshLayout layout;
 
     public MessageDisplay() {
         // Required empty public constructor
@@ -42,7 +47,23 @@ public class MessageDisplay extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.message_display_layout, container, false);
+
         AsyncTask task = new ProgressTask(view, getActivity()).execute();
+
+        layout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
+
+                exec.schedule(new Runnable(){
+                    @Override
+                    public void run(){
+                        layout.setRefreshing(false);
+                    }
+                }, 1, TimeUnit.SECONDS);
+            }
+        });
         return view;
     }
 

@@ -10,6 +10,10 @@ public class Team {
     private String description;
     private String timings;
 
+    public Team() {
+
+    }
+
     public Team (String name, String description, String timings) {
         this.name = name;
         this.description = description;

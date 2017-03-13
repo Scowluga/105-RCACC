@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:text="Drill"
-        style="@style/titleText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/team_name" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:text="COME TO DRILL!"
-        style="@style/infoText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_description" />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/drop_down"
+            android:id="@+id/drop_down"
+            android:layout_gravity="center_vertical"
+            />
 
-    <TextView
-        android:text="7pm - 9pm thursday"
-        style="@style/accentText"
+        <TextView
+            android:text="Drill"
+            style="@style/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/team_name"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/team_invis_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/team_hours"
-        android:gravity="end|right" />
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:text="7pm - 9pm thursday"
+            style="@style/accentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/team_hours"
+            android:layout_marginBottom="6dp"
+            />
+
+        <TextView
+            android:text="COME TO DRILL!"
+            style="@style/infoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/team_description" />
+    </LinearLayout>
+
 
 </LinearLayout>

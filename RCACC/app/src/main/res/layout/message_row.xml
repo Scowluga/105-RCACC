@@ -7,13 +7,17 @@
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="left"
         android:id="@+id/title_text"
-        style="@style/titleText"/>
+        style="@style/titleText"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -32,37 +36,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Details: "
-            style="@style/accentText"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/notes_text"
             style="@style/infoText"
-            android:text="NOTES"/>
+            android:text="Notes"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="actual date lul"
-            style="@style/accentText"
-            android:id="@+id/date_text" />
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:text="Date: "
-            style="@style/accentText"
-            android:gravity="right"/>
-
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="actual date lul"
+        style="@style/accentText"
+        android:id="@+id/date_text"
+        android:layout_marginBottom="10dp"/>
 </LinearLayout>

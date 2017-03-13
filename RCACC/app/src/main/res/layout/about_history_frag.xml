@@ -29,7 +29,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/history_title"
                     style="@style/infoText"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="25dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,14 +53,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="Artillery Brass"
-                style="@style/AccentButton"/>
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
             <Button
                 android:id="@+id/norm_cap"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="Cadet Brass"
-                style="@style/AccentButton"/>
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
         </LinearLayout>
     </RelativeLayout>
 </FrameLayout>

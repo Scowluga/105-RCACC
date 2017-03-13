@@ -19,7 +19,7 @@ import com.scowluga.android.rcacc.sync.SyncUtils;
 
 public class FirstRun extends AppCompatActivity {
 
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +68,7 @@ public class FirstRun extends AppCompatActivity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            if (googleDriveDataStore != null) {
+            if (googleDriveDataStore != null || !wifiOn(getApplicationContext())) {
 
                 // Synchronize
                 SyncUtils.CreateSyncAccount(getApplicationContext());
@@ -78,14 +78,14 @@ public class FirstRun extends AppCompatActivity {
                 getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                         .putBoolean("isFirst", false).apply();
 
-                // Start activity because successfuly set up
-                Intent intent = new Intent(FirstRun.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
             } else {
-                Toast.makeText(context, "Database connection error", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Error. Messages may not be up to date.", Toast.LENGTH_LONG).show();
             }
+            // Start activity because successfully set up
+            Intent intent = new Intent(FirstRun.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
         }
 
         protected GoogleDriveDataStore doInBackground(final String... args) {

@@ -31,6 +31,9 @@ import com.scowluga.android.rcacc.R;
 import com.scowluga.android.rcacc.sync.SyncUtils;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -269,6 +272,21 @@ public class MainActivity extends AppCompatActivity
                 .attach(frag)
                 .addToBackStack(TAGFRAGMENT)
                 .commit();
-    }
+        if (frag instanceof MessageDisplay) {
+            try {
+                MessageDisplay.layout.setRefreshing(true);
 
+                final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
+
+                exec.schedule(new Runnable(){
+                    @Override
+                    public void run(){
+                        MessageDisplay.layout.setRefreshing(false);
+                    }
+                }, 1, TimeUnit.SECONDS);
+            } catch (Exception e) {
+
+            }
+        }
+    }
 }

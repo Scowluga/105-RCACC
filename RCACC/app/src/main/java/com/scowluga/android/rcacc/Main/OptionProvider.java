@@ -86,7 +86,7 @@ public class OptionProvider {
 
         navOptions.add(new GroupOption("Join", new ArrayList<ChildOption>(), R.drawable.personplus, true, new JoinFrag(), false, false));
 
-        navOptions.add(new GroupOption("Info", new ArrayList<ChildOption>(), R.drawable.here, true, new InfoFrag(), false, false));
+//        navOptions.add(new GroupOption("Info", new ArrayList<ChildOption>(), R.drawable.here, true, new InfoFrag(), false, false));
 
         navOptions.add(new GroupOption("Debug", new ArrayList<ChildOption>(), R.drawable.arrow, true, new DebugFrag(), false, false));
 

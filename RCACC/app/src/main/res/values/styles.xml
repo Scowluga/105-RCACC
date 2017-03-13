@@ -43,12 +43,13 @@
 
     <!--The top margin-->
     <dimen name="marginOut">
-        10dp
+        12dp
     </dimen>
 
     <!--All Buttons-->
     <style name="AccentButton">
         <!--<item name="android:textColor">@color/colorAccent</item>-->
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
@@ -57,12 +58,14 @@
     <!--*******************************************************************-->
 
     <style name="largeText">
+        <item name="android:color">@color/black</item>
         <item name="android:textSize">30sp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="titleText">
+        <item name="android:color">@color/black</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textStyle">bold</item>
@@ -74,7 +77,8 @@
     </style>
 
     <style name="infoText">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
     </style>
 
     <style name="groupText">

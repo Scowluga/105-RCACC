@@ -9,67 +9,78 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="?attr/actionBarSize"
         >
 
-            <ScrollView
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/drillteam"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-                        <TextView
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/marginOut"
+                    android:paddingBottom="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+                    <TextView
                         android:text="Hours of Operation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="left"
                         android:id="@+id/join1"
                         style="@style/largeText"
                         />
 
-                        <TextView
-                            android:text="Tuesday Evening, 6:30PM to 9:00PM"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/join11"
-                            style="@style/accentText"
-                            android:gravity="left"
-                            android:layout_margin="10dp"
-                            />
+                    <TextView
+                        android:text="Tuesday Evening, 6:30PM to 9:00PM"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:id="@+id/join11"
+                        style="@style/accentText"
+                        android:gravity="left"
+                        />
 
-                        <TextView
-                            android:text="@string/join_info1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            style="@style/infoText"
-                            android:id="@+id/join2"
-                            android:layout_margin="10dp"/>
+                    <TextView
+                        android:text="@string/join_info1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/infoText"
+                        android:id="@+id/join2" />
 
-                        <TextView
-                            android:text="Our Address"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/join3"
-                            style="@style/titleText"
-                            android:gravity="center_horizontal"/>
-                        <TextView
-                            android:text="@string/join_info2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/join4"
-                            android:layout_margin="10dp"
-                            style="@style/infoText"
-                            android:gravity="center_horizontal"/>
-
+                    <TextView
+                        android:text="Our Address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="6dp"
+                        android:id="@+id/join3"
+                        style="@style/titleText"
+                        android:gravity="left"/>
+                    <TextView
+                        android:text="@string/join_info2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/join4"
+                        style="@style/infoText"
+                        android:gravity="left"/>
                 </LinearLayout>
 
-            </ScrollView>
-
+                </LinearLayout>
+        </ScrollView>
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
@@ -79,8 +90,9 @@
             android:layout_marginBottom="@dimen/fab_margin"
             android:layout_marginRight="@dimen/fab_margin"
             android:id="@+id/mapFAB"
-
-            app:srcCompat="@drawable/directionedit" />
+            app:srcCompat="@drawable/mapwhite"
+            />
+            <!--app:srcCompat="@drawable/directionedit"-->
     </RelativeLayout>
 
 

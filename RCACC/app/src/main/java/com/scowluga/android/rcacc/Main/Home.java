@@ -5,16 +5,24 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.Info.Staff.LoginFrag;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 import static com.scowluga.android.rcacc.R.id.frag_layout;
@@ -87,7 +95,42 @@ public class Home extends Fragment {
                 }
             }
         });
+
+        final Animation animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fadein);
+
+        final ImageView iv = (ImageView)v.findViewById(R.id.anchor);
+
+        FloatingActionButton fab = (FloatingActionButton)v.findViewById(R.id.refreshFAB);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Integer> pictures = getImages();
+
+                int random = current;
+                while (random == current) {
+                    random = (int)Math.round(Math.random() * pictures.size());
+                }
+
+                iv.setImageResource(random);
+            }
+        });
         return v;
     }
 
+    private static List<Integer> getImages () {
+        List<Integer> pictures = new ArrayList<Integer>(Arrays.asList(
+                R.drawable.featuregraphic, // has to be number 0
+                R.drawable.drillteam,
+                R.drawable.ss1,
+                R.drawable.ss2,
+                R.drawable.ss3,
+                R.drawable.ss4,
+                R.drawable.ss5,
+                R.drawable.ss6,
+                R.drawable.ss7,// dw about 8
+                R.drawable.ss9,
+                R.drawable.ss10
+        ));
+        return pictures;
+    }
 }

@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="105 RCACC "
+            android:text="105 RCACC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -20,7 +20,7 @@
             android:id="@+id/info_display1" />
 
         <TextView
-            android:text="Release Version 1.0"
+            android:text="Release Version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

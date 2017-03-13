@@ -48,12 +48,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
                         android:gravity="center"
                         android:text="105 RCACC"
                         android:typeface="serif"
                         android:textStyle="bold"
                         android:textSize="40sp"
-                        android:background="@color/colorPrimary"
+                        android:background="@drawable/gradient1"
                         android:textColor="#fff"
                         android:layout_gravity="center"/>
                 </LinearLayout>

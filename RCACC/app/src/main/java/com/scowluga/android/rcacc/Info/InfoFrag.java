@@ -3,6 +3,8 @@ package com.scowluga.android.rcacc.Info;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Text;
 import com.scowluga.android.rcacc.Main.FirstRun;
 import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.Main.OptionProvider;
@@ -38,6 +42,16 @@ public class InfoFrag extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.info_fragment, container, false);
 
+        PackageInfo pInfo = null;
+        try {
+            pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+            String version = pInfo.versionName;
+
+            TextView tv = (TextView)v.findViewById(R.id.info_display2);
+            tv.setText(version);
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(getContext(), "App Version Not Found", Toast.LENGTH_SHORT).show();
+        }
         Button login = (Button)v.findViewById(R.id.infoLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override

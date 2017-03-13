@@ -2,91 +2,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.scowluga.android.rcacc.Main.Home"
     android:layout_marginTop="?attr/actionBarSize">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
-        <LinearLayout
+        android:layout_height="match_parent">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/featuregraphic"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                style="@style/titleText"
-                android:textStyle="bold"
-                android:text="105 7th Toronto Regiment"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                style="@style/titleText"
-                android:textAllCaps="false"
-                android:text="Royal Canadian Army Cadet Corps"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                style="@style/accentText"
-                android:textStyle="normal"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:text="Streetsville, Mississauga"/>
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:src="@drawable/logocadets"/>
-
-
+            android:layout_gravity="center">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
-                <Button
-                    android:text="Login"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/infoLogin"
-                    style="@style/AccentButton"
-                    android:drawableLeft="@drawable/login_drawable"/>
-                <Button
-                    android:text="Contact"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/infoContect"
-                    style="@style/AccentButton"
-                    android:drawableLeft="@drawable/contact_drawable"/>
-                <Button
-                    android:text="Rate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/infoRate"
-                    style="@style/AccentButton"
-                    android:drawableLeft="@drawable/rate_drawable"/>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </ScrollView>
+                <ImageView
+                    android:id="@+id/anchor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/featuregraphic"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/titleText"
+                    android:textStyle="bold"
+                    android:text="105 7th Toronto Regiment"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/titleText"
+                    android:textAllCaps="false"
+                    android:text="Royal Canadian Army Cadet Corps"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/accentText"
+                    android:textStyle="normal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:text="Streetsville, Mississauga"/>
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logocadets"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+                    <Button
+                        android:text="Login"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/infoLogin"
+                        style="@style/AccentButton"
+                        android:drawableLeft="@drawable/login_drawable"/>
+                    <Button
+                        android:text="Contact"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/infoContect"
+                        style="@style/AccentButton"
+                        android:drawableLeft="@drawable/contact_drawable"/>
+                    <Button
+                        android:text="Rate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/infoRate"
+                        style="@style/AccentButton"
+                        android:drawableLeft="@drawable/rate_drawable"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/refreshFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@drawable/whiterefresh"
+
+            app:layout_anchor="@id/anchor"
+            app:layout_anchorGravity="bottom|right|end"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </FrameLayout>
