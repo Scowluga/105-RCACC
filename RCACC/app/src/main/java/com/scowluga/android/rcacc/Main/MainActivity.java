@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import android.support.v4.app.Fragment;
@@ -244,12 +245,25 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        SyncUtils.TriggerRefresh();
+        if (MessageDisplay.running) {
+            MessageDisplay.layout.setRefreshing(true);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    MessageDisplay.layout.setRefreshing(false);
+                }
+            }, 1000);
+        } else {
+            Fragment frag = getSupportFragmentManager().findFragmentByTag(TAGFRAGMENT);
+            getSupportFragmentManager().beginTransaction()
+                    .detach(frag)
+                    .attach(frag)
+                    .addToBackStack(TAGFRAGMENT)
+                    .commit();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -264,29 +278,4 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
-    public void refreshButton(MenuItem item) { // Refreshes current fragment.
-        SyncUtils.TriggerRefresh();
-        Fragment frag = getSupportFragmentManager().findFragmentByTag(TAGFRAGMENT);
-        getSupportFragmentManager().beginTransaction()
-                .detach(frag)
-                .attach(frag)
-                .addToBackStack(TAGFRAGMENT)
-                .commit();
-        if (frag instanceof MessageDisplay) {
-            try {
-                MessageDisplay.layout.setRefreshing(true);
-
-                final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
-
-                exec.schedule(new Runnable(){
-                    @Override
-                    public void run(){
-                        MessageDisplay.layout.setRefreshing(false);
-                    }
-                }, 1, TimeUnit.SECONDS);
-            } catch (Exception e) {
-
-            }
-        }
-    }
 }

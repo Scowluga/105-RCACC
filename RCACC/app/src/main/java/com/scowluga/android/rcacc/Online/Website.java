@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -13,6 +14,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.R;
+import com.scowluga.android.rcacc.sync.SyncUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,7 +94,6 @@ public class Website extends Fragment {
 
         return v;
     }
-
 
     public WebView getWebView() {
         return webView;

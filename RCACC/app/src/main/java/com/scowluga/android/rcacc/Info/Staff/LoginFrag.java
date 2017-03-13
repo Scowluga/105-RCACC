@@ -63,9 +63,9 @@ public class LoginFrag extends Fragment {
         }
     }
     private boolean loginSuccess(View v) {
-        // TODO: Create own login passwords
+        // TODO: CHANGE LOGINS! NOT ACTUAL LOGINS USED (don't even try them)
         List<String> validKeys = new ArrayList<>(
-                Arrays.asList("Dummy_login", "These are not the actual passwords"));
+                Arrays.asList("dummy1", "dummy2"));
         EditText et = (EditText)getActivity().findViewById(R.id.loginKey);
         if (et.getText().toString().equals("")) {
             et.setError("No password entered");

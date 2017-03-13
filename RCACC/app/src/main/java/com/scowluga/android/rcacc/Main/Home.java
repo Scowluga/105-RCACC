@@ -2,19 +2,28 @@ package com.scowluga.android.rcacc.Main;
 
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.scowluga.android.rcacc.Info.Staff.LoginFrag;
 import com.scowluga.android.rcacc.Online.Website;
@@ -32,11 +41,15 @@ import static com.scowluga.android.rcacc.R.id.frag_layout;
  */
 public class Home extends Fragment {
 
+    public Handler handler;
+    public ImageSwitcher imageSwitcher;
+    public boolean x = true;
+
+    public static int count = 0;
 
     public Home() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,25 +109,108 @@ public class Home extends Fragment {
             }
         });
 
-        final Animation animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fadein);
+        final List<Integer> pictures = getImages();
 
-        final ImageView iv = (ImageView)v.findViewById(R.id.anchor);
+        imageSwitcher = (ImageSwitcher)v.findViewById(R.id.switcher);
 
-        FloatingActionButton fab = (FloatingActionButton)v.findViewById(R.id.refreshFAB);
+        Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+        Animation out = AnimationUtils.loadAnimation(getContext(), R.anim.fadeout);
+
+        imageSwitcher.setInAnimation(in);
+        imageSwitcher.setOutAnimation(out);
+
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(getContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setAdjustViewBounds(true);
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
+        imageSwitcher.setImageResource(pictures.get(count));
+
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.refreshFAB);
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        lp.anchorGravity = Gravity.TOP | GravityCompat.END;
+        fab.setLayoutParams(lp);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Integer> pictures = getImages();
-
-                int random = current;
-                while (random == current) {
-                    random = (int)Math.round(Math.random() * pictures.size());
+                count ++;
+                if (count == pictures.size()) {
+                    count = 0;
                 }
-
-                iv.setImageResource(random);
+                imageSwitcher.setImageResource(pictures.get(count));
             }
         });
+
         return v;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (imageSwitcher == null) {
+            imageSwitcher = (ImageSwitcher)getActivity().findViewById(R.id.switcher);
+            Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fadein);
+            Animation out = AnimationUtils.loadAnimation(getContext(), R.anim.fadeout);
+
+            imageSwitcher.setInAnimation(in);
+            imageSwitcher.setOutAnimation(out);
+
+            imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+                @Override
+                public View makeView() {
+                    ImageView imageView = new ImageView(getContext());
+                    imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    return imageView;
+                }
+            });
+        }
+        imageSwitcher.setImageResource(getImages().get(count));
+
+
+        final FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.refreshFAB);
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        lp.anchorGravity = Gravity.TOP | GravityCompat.END;
+        fab.setLayoutParams(lp);
+        fab.setVisibility(View.INVISIBLE);
+
+        // Change picture every few seconds
+
+        handler = new Handler();
+
+        x = true;
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (x) {
+                    x = false;
+                } else {
+                    count ++;
+                }
+                if (count == getImages().size()) {
+                    count = 0;
+                }
+                fab.setVisibility(View.VISIBLE);
+                imageSwitcher.setImageResource(getImages().get(count));
+
+                handler.postDelayed(this, 5000);
+            }
+        }, 1);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private static List<Integer> getImages () {

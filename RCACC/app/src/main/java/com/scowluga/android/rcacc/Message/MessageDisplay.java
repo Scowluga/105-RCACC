@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -35,6 +37,8 @@ import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
  */
 public class MessageDisplay extends Fragment {
 
+    public static boolean running = false;
+
     public static List<Message> messageList;
     public static SwipeRefreshLayout layout;
 
@@ -54,14 +58,14 @@ public class MessageDisplay extends Fragment {
         layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
-
-                exec.schedule(new Runnable(){
+                SyncUtils.TriggerRefresh();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
                     @Override
-                    public void run(){
+                    public void run() {
                         layout.setRefreshing(false);
                     }
-                }, 1, TimeUnit.SECONDS);
+                }, 1000);
             }
         });
         return view;
@@ -98,6 +102,18 @@ public class MessageDisplay extends Fragment {
             messageList = MessageProvider.getInfo(getContext()); // read from file to get list
             return messageList;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        running = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        running = false;
     }
 }
 
