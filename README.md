@@ -9,7 +9,7 @@
 <p>In grade 11, I decided to apply my android development skills to help the cadet community, by creating a application that would help the corps run, communicate, and grow. </p>
 <p>Cue the 105 RCACC: an app I decided to create that would not only increase the community presence of the corps through technology, but also help parents and cadets get important information-fast!</p>
 
-<h2>Full Description</h2>
+<h2>Full Description (Store Listing)</h2>
 Whether interested in the army cadet program, or already involved, the 105 RCACC application will help you get the information you need - fast! 
 
 Get quick access to important cadet resources, the 105 calendar, and learn more about our corps, all in one application.
@@ -17,8 +17,6 @@ Get quick access to important cadet resources, the 105 calendar, and learn more 
 <br>*** Pages and Features ***</br>
 <i>--- Home ---</i>
 A beautiful slideshow featuring many of 105's pictures, and general information about the app. Also includes login, contact form, and rating functionality. 
-<i>-- News --</i>
-Keep up to date with a list of synchronized, real time messages from your officers and senior cadets. Refreshable through Google Drive database connection. 
 
 <i>-- About 105 -- </i>
 Learn more about the 105 RCACC through 3 individual sections: 
@@ -28,7 +26,7 @@ Learn more about the 105 RCACC through 3 individual sections:
 - Teams: learn about the 4 major teams at 105: drill, band, shooting, and orienteering. 
 
 <i>-- Resources -- </i> 
-Need to report an absence? How about summer training applications? Get quick access to important cadet resources, without having to search online. Also includes uniform inspections Google Apps Script for senior cadets. 
+Need to report an absence? How about summer training applications? Get quick access to important cadet resources, without having to search online. Also includes instructions to download remind functionality, and uniform inspections Google Apps Script for senior cadets. 
 
 <i>-- Find Us Online --</i> 
 Interested? Want to learn more? Come find us on Facebook, our personal 105 website, and Instagram. 105 is everywhere on the web! 
@@ -37,7 +35,7 @@ Interested? Want to learn more? Come find us on Facebook, our personal 105 websi
 If you're looking to join, you've made the right decision! View our hours, address, and a map on how to get to our location.
 
 <h2>Uniform Inspections</h2>
-<p>Recently added was a Google Apps Script for dynamic uniform inspection management and organization. More details to come.</p>
+<p>Recently added was a Google Apps Script for dynamic uniform inspection management and organization. The script manages the incrementation of cadet's individual 'scores', through various categories including beret, pants, boots, tunic, etc. Improves overall dress through support, formalization, and organization. </p>
 <h2>Conclusion</h2>
 <p>Thank you to everybody that helped make this application possible. Special thanks to my father, and Mr. Chuu of 105.</p>
 <p>You can contact me from the application, or through email. </p>
