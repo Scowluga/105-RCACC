@@ -11,8 +11,7 @@
         android:layout_marginTop="@dimen/marginOut">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/cap_brass_buttons">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,8 +28,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/history_title"
                     style="@style/infoText"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -38,29 +37,28 @@
                     android:text="@string/history_sub"
                     style="@style/infoText"/>
 
+                <LinearLayout
+                    android:id="@+id/cap_brass_buttons"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/our_cap"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="Artillery Brass"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+                    <Button
+                        android:id="@+id/norm_cap"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="Cadet Brass"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/cap_brass_buttons"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-            <Button
-                android:id="@+id/our_cap"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Artillery Brass"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
-            <Button
-                android:id="@+id/norm_cap"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Cadet Brass"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
-        </LinearLayout>
     </RelativeLayout>
 </FrameLayout>

@@ -21,14 +21,19 @@ import com.scowluga.android.rcacc.Main.FirstRun;
 import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.R;
 import com.scowluga.android.rcacc.sync.GoogleDriveDataStore;
+import com.scowluga.android.rcacc.sync.RemoteFeedProcessor;
 import com.scowluga.android.rcacc.sync.SyncUtils;
+import com.scowluga.android.rcacc.sync.TestDrive;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 
 
@@ -68,6 +73,7 @@ public class MessageDisplay extends Fragment {
                 }, 1000);
             }
         });
+
         return view;
     }
 
@@ -96,6 +102,21 @@ public class MessageDisplay extends Fragment {
 
             lv.setAdapter(adapter);
 
+            // Staff User Checks
+            boolean isStaff = getContext().getSharedPreferences("STAFFLOGIN", MODE_PRIVATE)
+                    .getBoolean("isStaff", false);
+
+            if (isStaff) { // it's you!
+                try {
+                    File f = RemoteFeedProcessor.encode(messageList);
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
         }
 
         protected List<Message> doInBackground(final String... args) {
@@ -108,6 +129,7 @@ public class MessageDisplay extends Fragment {
     public void onResume() {
         super.onResume();
         running = true;
+        MainActivity.toolbar.setTitle("News");
     }
 
     @Override

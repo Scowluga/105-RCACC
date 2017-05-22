@@ -6,40 +6,50 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <Button
-            android:text="Create new message (news)"
+        android:layout_height="match_parent">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staffSelectMessage" />
+            android:text="Welcome!"
+            style="@style/largeText"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:gravity="center">-->
 
-        <Button
-            android:text="delete message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/staffDeleteMessage" />
+        <!--<Button-->
+            <!--android:text="Create new message (news)"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/staffSelectMessage" />-->
+
+        <!--<Button-->
+            <!--android:text="delete message"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/staffDeleteMessage" />-->
 
 
-        <!--Rest in peace our past events family-->
-        <Button
-            android:text="create new event (events)"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/staffSelectEvent" />
+        <!--&lt;!&ndash;Rest in peace our past events family&ndash;&gt;-->
+        <!--<Button-->
+            <!--android:text="create new event (events)"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/staffSelectEvent" />-->
 
-        <Button
-            android:text="delete event"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/staffDeleteEvent" />
+        <!--<Button-->
+            <!--android:text="delete event"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/staffDeleteEvent" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 </FrameLayout>

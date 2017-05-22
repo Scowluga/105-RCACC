@@ -13,25 +13,31 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.scowluga.android.rcacc.Main.OptionProvider;
 import com.scowluga.android.rcacc.R;
 import com.scowluga.android.rcacc.sync.SyncUtils;
+
+import static com.scowluga.android.rcacc.Main.MainActivity.toolbar;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Website extends Fragment {
+
     public static String URL = "url"; //key for the url
     public static String JAVASCRIPT = "script";
 
     private static boolean landTrue = false;
 
     private WebView webView; // for on back pressed
+    private String websiteUrl;
 
     public Website() {
         // Required empty public constructor
     }
 
     public static Website newInstance(String url) {
+
         Bundle args = new Bundle();
         args.putString(URL, url);
         args.putBoolean(JAVASCRIPT, true);
@@ -41,6 +47,7 @@ public class Website extends Fragment {
     }
 
     public static Website newInstance(String url, boolean script) {
+
         Bundle args = new Bundle();
         args.putString(URL, url);
         args.putBoolean(JAVASCRIPT, script);
@@ -58,6 +65,7 @@ public class Website extends Fragment {
         Bundle args = getArguments();
 
         String url = args.getString(URL);
+        websiteUrl = url;
 
         //IMPLEMENT THIS: have calendar open in browser so can go back
         final Boolean scriptTrue = args.getBoolean(JAVASCRIPT);
@@ -97,5 +105,28 @@ public class Website extends Fragment {
 
     public WebView getWebView() {
         return webView;
+    }
+
+    @Override
+    public void onResume() {
+//        Toast.makeText(getContext(), websiteUrl, Toast.LENGTH_SHORT).show();
+
+        switch (websiteUrl) {
+            case OptionProvider.ABSENCE_URL:
+                toolbar.setTitle("Absence Reporting");
+                break;
+            case OptionProvider.SUMMER_URL:
+                toolbar.setTitle("Summer Training");
+                break;
+            case OptionProvider.UNIFORM_URL:
+                toolbar.setTitle("Uniform Inspections");
+                break;
+            case OptionProvider.CAL_URL:
+                toolbar.setTitle("Calendar");
+                break;
+
+        }
+
+        super.onResume();
     }
 }

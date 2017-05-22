@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.Main.FirstRun;
+import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
 
@@ -51,4 +52,9 @@ public class JoinFrag extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        MainActivity.toolbar.setTitle("Join");
+        super.onResume();
+    }
 }

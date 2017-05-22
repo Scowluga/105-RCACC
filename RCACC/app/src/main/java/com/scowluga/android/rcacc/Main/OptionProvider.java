@@ -7,6 +7,7 @@ import com.scowluga.android.rcacc.Join.JoinFrag;
 import com.scowluga.android.rcacc.Message.MessageDisplay;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
+import com.scowluga.android.rcacc.news.NewsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class OptionProvider {
     public static final String CONTACT_URL = "https://docs.google.com/forms/d/e/1FAIpQLScqkdFSQ0vuI9p5tnpKChdRTds6VI_KcZtmGC8x7yvcDljxpg/viewform";
     public static final String ABSENCE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeiKST_rXmse0GOnX3uozcO4ldzk0CRFe3Ta4pfYFJYstbKhA/viewform";
     public static final String SUMMER_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc3HulNF6BgD89fT0LWZogKjeCBeSn_8LeKa37imY94xGVRoQ/viewform";
+    public static final String UNIFORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScBWRfJdvrASQ0fN_gCAH0VpE-k_xmGLU82NeZI95eZj3mNDA/viewform";
+
+    public static final String CAL_URL = "https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&src=artillery.co%40gmail.com&color=%232F6309&ctz=America%2FToronto";
 
     public static final String facebook = "Facebook"; // the 3 string titles
     public static final String website = "Website";
@@ -41,23 +45,26 @@ public class OptionProvider {
 //                       boolean reqWifi               // requires wifi to open
 //    ) {
 
-    public static List<GroupOption> getList() {
+    public static List<GroupOption> getList(boolean isStaff, boolean isAdmin) {
         // --------------------------------------------
         List<GroupOption> navOptions = new ArrayList<>(); // TOTAL LIST FOR OPTIONS
 
-        // NEWS
-        navOptions.add(new GroupOption("News", new ArrayList<ChildOption>(), R.drawable.announcement, true, new MessageDisplay(), true, false));
+        // HOME
+        navOptions.add(new GroupOption("Home", new ArrayList<ChildOption>(), R.drawable.homeicon, true, new Home(), false, false));
 
+        // NEWS
+//        navOptions.add(new GroupOption("News", new ArrayList<ChildOption>(), R.drawable.announcement, true, new MessageDisplay(), true, false));
+//        Goodbye 7 more years of code :( good learning
         // EVENTS
         // Goodbye 7 years of code :(
         //navOptions.add(new GroupOption("Events", new ArrayList<ChildOption>(), R.drawable.events, true, new EventDisplay(), true, false));
 
-        String CAL_URL = "https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&src=artillery.co%40gmail.com&color=%232F6309&ctz=America%2FToronto";
-        navOptions.add(new GroupOption("Calendar", new ArrayList<ChildOption>(), R.drawable.events, true, Website.newInstance(CAL_URL, false), true, true));
+
+
 
         // ABOUT 105
         List<ChildOption> aboutList = new ArrayList<>();
-        aboutList.add(new ChildOption("Home", R.drawable.homeicon, new Home(), false));
+        aboutList.add(new ChildOption("Calendar", R.drawable.events, Website.newInstance(CAL_URL, false), true));
         aboutList.add(new ChildOption("History", R.drawable.hourglass, new HistoryFrag(), false));
         aboutList.add(new ChildOption("Teams", R.drawable.team, new TeamFrag(), false));
         navOptions.add(new GroupOption("About 105", aboutList, R.drawable.infoblack, false, null, false, false));
@@ -67,8 +74,10 @@ public class OptionProvider {
         // implement later
         //resList.add(new ChildOption("Summer Training", R.drawable.sun));
         //resList.add(new ChildOption("Documents", R.drawable.documents));
+        resList.add(new ChildOption("Remind", R.drawable.announcement, new NewsFragment(), false));
         resList.add(new ChildOption("Absence Reporting", R.drawable.phone, Website.newInstance(ABSENCE_URL), true));
         resList.add(new ChildOption("Summer Training", R.drawable.sun, Website.newInstance(SUMMER_URL), true));
+        if (isStaff) {resList.add(new ChildOption("Uniform Inspections", R.drawable.uniform, Website.newInstance(UNIFORM_URL), true)); }; // uniform inspections GAS
         navOptions.add(new GroupOption("Resources", resList, R.drawable.documents, false, null, false, true));
 
         // ONLINE
@@ -88,7 +97,9 @@ public class OptionProvider {
 
 //        navOptions.add(new GroupOption("Info", new ArrayList<ChildOption>(), R.drawable.here, true, new InfoFrag(), false, false));
 
-        navOptions.add(new GroupOption("Debug", new ArrayList<ChildOption>(), R.drawable.arrow, true, new DebugFrag(), false, false));
+        if (isAdmin) {
+            navOptions.add(new GroupOption("Debug", new ArrayList<ChildOption>(), R.drawable.arrow, true, new DebugFrag(), false, false));
+        };
 
         return navOptions;
     }

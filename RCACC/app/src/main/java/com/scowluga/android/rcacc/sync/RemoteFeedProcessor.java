@@ -82,7 +82,7 @@ public class RemoteFeedProcessor {
 
     private static Message decodeMessage (String messageString) {
         String[] attributes = messageString.split(SPLIT_DELIMITER);
-        return new Message(attributes[0], new Date(Long.parseLong(attributes[1])), attributes[2], attributes[3]);
-
+        Message m = new Message(attributes[0], new Date(Long.parseLong(attributes[1].trim())), attributes[2], attributes[3]);
+        return m;
     }
 }

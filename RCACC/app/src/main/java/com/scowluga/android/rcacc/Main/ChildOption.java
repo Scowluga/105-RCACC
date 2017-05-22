@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
  * Created by robertlu on 2016-10-31.
  */
 
-public class ChildOption{
+public class ChildOption extends Option {
     private String name;
     private Integer imageId;
     private Fragment frag;

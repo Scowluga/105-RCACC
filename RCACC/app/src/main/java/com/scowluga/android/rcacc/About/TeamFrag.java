@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.R;
 
 import java.util.List;
@@ -113,5 +114,9 @@ public class TeamFrag extends Fragment {
         v.startAnimation(a);
     }
 
-
+    @Override
+    public void onResume() {
+        MainActivity.toolbar.setTitle("Teams");
+        super.onResume();
+    }
 }

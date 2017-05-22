@@ -17,6 +17,8 @@ import com.scowluga.android.rcacc.R;
 import com.scowluga.android.rcacc.sync.GoogleDriveDataStore;
 import com.scowluga.android.rcacc.sync.SyncUtils;
 
+import java.io.File;
+
 public class FirstRun extends AppCompatActivity {
 
     public static boolean DEBUG = false;
@@ -28,6 +30,7 @@ public class FirstRun extends AppCompatActivity {
         //first run. Default to true (so first time it runs)
         boolean first = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirst", true);
+
 
         if (first && !wifiOn(getApplicationContext())) {
             AlertDialog alertDialog = new AlertDialog.Builder(FirstRun.this).create();

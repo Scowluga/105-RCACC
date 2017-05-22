@@ -1,0 +1,41 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.scowluga.android.rcacc.news.NewsFragment"
+    style="@style/LayoutMargins">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/marginOut">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Remind.com "
+                style="@style/titleText"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Good day 105 cadets and family, as you may have been aware, we are no longer using Call-Em-All to announce important messages relating to training, cancellations, FTX news, etc. We will be switching to a new text message-based system and your action is required to sign-up to the system. Standard text message charge may apply from your carrier. Please follow the following instructions:"
+                style="@style/infoText"
+                android:layout_marginBottom="8dp"/>
+
+            <include
+                layout="@layout/news_list"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/infoText"
+                android:text="If you require further assistance, please feel free to reach out during our training nights to one of our adult staff."/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

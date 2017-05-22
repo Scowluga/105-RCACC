@@ -7,8 +7,8 @@ android {
         applicationId "com.scowluga.android.rcacc"
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 5
-        versionName "Version 1.0"
+        versionCode 7
+        versionName "Version 0.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

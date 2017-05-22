@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/titleText"
+        android:gravity="center"
         />
 
     <TextView
@@ -23,13 +24,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/infoText"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
     <TextView
         android:text="@string/history_cap3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/titleText"
+        android:gravity="center"
         />
 
     <TextView
@@ -37,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/infoText"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
     <Button
         android:text="Back"

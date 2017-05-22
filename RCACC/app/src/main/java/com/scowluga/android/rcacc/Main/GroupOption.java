@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 
-public class GroupOption {
+public class GroupOption extends Option {
     private String name; // NAME
     private List<ChildOption> children; // List of children
     private Integer imageId; // image

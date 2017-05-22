@@ -154,6 +154,7 @@ public class Home extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        MainActivity.toolbar.setTitle("Home");
         if (imageSwitcher == null) {
             imageSwitcher = (ImageSwitcher)getActivity().findViewById(R.id.switcher);
             Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fadein);

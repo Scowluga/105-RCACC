@@ -24,8 +24,8 @@ import java.util.List;
 
 public class GoogleDriveDataStore implements RemoteDataStore {
 
-    // TODO: Create keystore
-    private static final String PRIVATE_KEY = "";
+    public static final String PRIVATE_KEY = "";
+
 
     private static GoogleDriveDataStore INSTANCE = null;
 

@@ -26,6 +26,8 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.About.HistoryFrag;
+import com.scowluga.android.rcacc.About.TeamFrag;
+import com.scowluga.android.rcacc.Join.JoinFrag;
 import com.scowluga.android.rcacc.Message.MessageDisplay;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
@@ -40,8 +42,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAGFRAGMENT = "Tagfragment";
-    public ExpandableListView expList;
-    public List<GroupOption> options;
+    public static ExpandableListView expList;
+    public static List<GroupOption> options;
     public static Toolbar toolbar;
 
     public static MenuItem refresh;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity
     public static boolean debugger = false;
 
     public static boolean isStaff;
+    public static boolean isAdmin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,22 +84,19 @@ public class MainActivity extends AppCompatActivity
         // Staff User Checks
         isStaff = getSharedPreferences("STAFFLOGIN", MODE_PRIVATE)
                 .getBoolean("isStaff", false);
-        //
+        isAdmin = getSharedPreferences("STAFFLOGIN", MODE_PRIVATE)
+                .getBoolean("isAdmin", false);
 
-        // getting reference to refresh
         expList = (ExpandableListView) findViewById(R.id.expList);
-        options = OptionProvider.getList();
-        if (debugger) {
-            expList.setAdapter(new OptionAdapter(this, options.subList(0, options.size())));
-        } else {
-            expList.setAdapter(new OptionAdapter(this, options.subList(0, options.size() - 1)));
-        }
+        options = OptionProvider.getList(isStaff, isAdmin);
+        expList.setAdapter(new OptionAdapter(this, options));
 
         expList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 GroupOption opt = options.get(groupPosition);
                 if (opt.isClickable()) { //it can open a fragment
+
                     Fragment frag;
                     frag = opt.getFrag(); // get the fragment
 
@@ -211,6 +212,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         try {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             if (drawer.isDrawerOpen(GravityCompat.START)) { //CLOSER DRAWER FIRST PRIORITY
@@ -224,9 +226,7 @@ public class MainActivity extends AppCompatActivity
                     } else {
                         super.onBackPressed();
                     }
-                }
-
-                else {
+                } else {
                     super.onBackPressed(); //REGULAR BACK
                 }
             }

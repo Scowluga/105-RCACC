@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.scowluga.android.rcacc.Main.GroupOption;
 import com.scowluga.android.rcacc.Main.MainActivity;
+import com.scowluga.android.rcacc.Main.OptionAdapter;
+import com.scowluga.android.rcacc.Main.OptionProvider;
 import com.scowluga.android.rcacc.Message.MessageProvider;
 import com.scowluga.android.rcacc.R;
 
@@ -63,14 +66,20 @@ public class LoginFrag extends Fragment {
         }
     }
     private boolean loginSuccess(View v) {
-        // TODO: CHANGE LOGINS! NOT ACTUAL LOGINS USED (don't even try them)
+        // TODO: Create own login passwords
         List<String> validKeys = new ArrayList<>(
-                Arrays.asList("dummy1", "dummy2"));
+                Arrays.asList("rcaccstaff"));
         EditText et = (EditText)getActivity().findViewById(R.id.loginKey);
-        if (et.getText().toString().equals("")) {
+        String pass = et.getText().toString();
+        if (pass.equals("")) {
             et.setError("No password entered");
             return false; // no password
+        } else if (pass.equals("scowluga")) {
+            MainActivity.expList.setAdapter(new OptionAdapter(getContext(), OptionProvider.getList(true, true)));
+            getContext().getSharedPreferences("STAFFLOGIN", MODE_PRIVATE).edit().putBoolean("isAdmin", true).apply();
+            return true;
         } else if (validKeys.contains(et.getText().toString())) {
+            MainActivity.expList.setAdapter(new OptionAdapter(getContext(), OptionProvider.getList(true, false)));
             return true; // Successful login
         }
         et.setError("Wrong password");

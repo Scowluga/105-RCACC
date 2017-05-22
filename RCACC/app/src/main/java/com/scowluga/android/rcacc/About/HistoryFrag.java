@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.R;
 
 /**
@@ -54,4 +55,9 @@ public class HistoryFrag extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        MainActivity.toolbar.setTitle("History");
+        super.onResume();
+    }
 }

@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="3dp"
-    android:paddingBottom="3dp">
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
 
     <ImageView
         android:layout_width="@dimen/childIconSize"
         android:layout_height="@dimen/childIconSize"
         app:srcCompat="@drawable/phone"
         android:id="@+id/child_image"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="9dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="7dp"
         android:layout_gravity="center_vertical"
