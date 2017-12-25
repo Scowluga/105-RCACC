@@ -15,13 +15,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.vision.text.Text;
+import com.scowluga.android.rcacc.Info.Staff.LoginFrag;
 import com.scowluga.android.rcacc.Main.FirstRun;
 import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.Main.OptionProvider;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
-import com.scowluga.android.rcacc.Info.Staff.LoginFrag;
 
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 import static com.scowluga.android.rcacc.R.id.frag_layout;
