@@ -1,6 +1,5 @@
 package com.scowluga.android.rcacc.Main;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -8,35 +7,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.Gravity;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.scowluga.android.rcacc.About.HistoryFrag;
-import com.scowluga.android.rcacc.About.TeamFrag;
-import com.scowluga.android.rcacc.Join.JoinFrag;
-import com.scowluga.android.rcacc.Message.MessageDisplay;
 import com.scowluga.android.rcacc.Online.Website;
 import com.scowluga.android.rcacc.R;
-import com.scowluga.android.rcacc.sync.SyncUtils;
 
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -246,24 +236,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        SyncUtils.TriggerRefresh();
-        if (MessageDisplay.running) {
-            MessageDisplay.layout.setRefreshing(true);
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    MessageDisplay.layout.setRefreshing(false);
-                }
-            }, 1000);
-        } else {
-            Fragment frag = getSupportFragmentManager().findFragmentByTag(TAGFRAGMENT);
-            getSupportFragmentManager().beginTransaction()
-                    .detach(frag)
-                    .attach(frag)
-                    .addToBackStack(TAGFRAGMENT)
-                    .commit();
-        }
+
+        Fragment frag = getSupportFragmentManager().findFragmentByTag(TAGFRAGMENT);
+        getSupportFragmentManager().beginTransaction()
+                .detach(frag)
+                .attach(frag)
+                .addToBackStack(TAGFRAGMENT)
+                .commit();
 
         return super.onOptionsItemSelected(item);
     }

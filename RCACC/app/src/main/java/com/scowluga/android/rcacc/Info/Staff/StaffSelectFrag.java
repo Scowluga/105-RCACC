@@ -64,39 +64,5 @@ public class StaffSelectFrag extends Fragment {
         return v;
     }
 
-    public void newEvent(View view) {
-        Fragment frag = new StaffNewEventFrag();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                .addToBackStack(TAGFRAGMENT)
-                .commit();
-
-    }
-
-    public void newMessage(View view) {
-        Fragment frag = new StaffNewMessageFrag();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                .addToBackStack(TAGFRAGMENT)
-                .commit();
-    }
-
-    public void delMessage() {
-        Toast.makeText(getContext(), "Select message to delete", Toast.LENGTH_SHORT).show();
-        Fragment frag = new StaffDeleteMessage();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                .addToBackStack(TAGFRAGMENT)
-                .commit();
-    }
-
-    public void delEvent() {
-        Toast.makeText(getContext(), "Select event to delete", Toast.LENGTH_SHORT).show();
-        Fragment frag = new StaffDeleteEvent();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frag_layout, frag, TAGFRAGMENT)
-                .addToBackStack(TAGFRAGMENT)
-                .commit();
-    }
 
 }

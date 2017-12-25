@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.scowluga.android.rcacc.Main.OptionProvider;
 import com.scowluga.android.rcacc.R;
-import com.scowluga.android.rcacc.sync.SyncUtils;
 
 import static com.scowluga.android.rcacc.Main.MainActivity.toolbar;
 

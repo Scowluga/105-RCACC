@@ -9,15 +9,11 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.scowluga.android.rcacc.R;
-import com.scowluga.android.rcacc.sync.GoogleDriveDataStore;
-import com.scowluga.android.rcacc.sync.SyncUtils;
-
-import java.io.File;
 
 public class FirstRun extends AppCompatActivity {
 
@@ -49,55 +45,6 @@ public class FirstRun extends AppCompatActivity {
         } else {
             // Creating async task
             // Parameters (don't need) - ProgressBar (don't need) - Result
-            AsyncTask task = new ProgressTask(getApplicationContext(), FirstRun.this).execute();
-        }
-    }
-
-    // Setting up the application
-    private class ProgressTask extends AsyncTask<String, Void, GoogleDriveDataStore> {
-        private Context context;
-        private ProgressDialog dialog;
-        public ProgressTask(Context ctx, Activity act) {
-            context = ctx;
-            dialog = new ProgressDialog(act);
-        }
-        protected void onPreExecute() {
-            dialog.setMessage("Connecting to Database");
-            dialog.show();
-        }
-
-        @Override
-        protected void onPostExecute(final GoogleDriveDataStore googleDriveDataStore) {
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-            if (googleDriveDataStore != null || !wifiOn(getApplicationContext())) {
-
-                // Synchronize
-                SyncUtils.CreateSyncAccount(getApplicationContext());
-                SyncUtils.TriggerRefresh();
-
-                // It is no longer the first run (successfully set up local database)
-                getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-                        .putBoolean("isFirst", false).apply();
-
-            } else {
-                Toast.makeText(context, "Error. Messages may not be up to date.", Toast.LENGTH_LONG).show();
-            }
-            // Start activity because successfully set up
-            Intent intent = new Intent(FirstRun.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
-
-        protected GoogleDriveDataStore doInBackground(final String... args) {
-            try {
-                return GoogleDriveDataStore.getInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
         }
     }
 
