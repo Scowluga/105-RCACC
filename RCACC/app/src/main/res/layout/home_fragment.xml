@@ -55,6 +55,7 @@
                     android:text="Streetsville, Mississauga"/>
 
                 <ImageView
+                    android:id="@+id/cadetLogo"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"

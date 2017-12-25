@@ -4,8 +4,7 @@ package com.scowluga.android.rcacc.Main;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +12,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,6 +33,11 @@ import com.scowluga.android.rcacc.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 import static com.scowluga.android.rcacc.Main.MainActivity.TAGFRAGMENT;
 import static com.scowluga.android.rcacc.R.id.frag_layout;
@@ -71,7 +77,7 @@ public class Home extends Fragment {
                 }
             }
         });
-        Button contact = (Button)v.findViewById(R.id.infoContect);
+        final Button contact = (Button)v.findViewById(R.id.infoContect);
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +94,7 @@ public class Home extends Fragment {
             }
         });
 
-        Button rate = (Button)v.findViewById(R.id.infoRate);
+        final Button rate = (Button)v.findViewById(R.id.infoRate);
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +153,90 @@ public class Home extends Fragment {
             }
         });
 
+
+        // Showcase Guide
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(200);
+        final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity(), "HOMESEQ1");
+        sequence.setConfig(config);
+
+        final ImageView imageView = (ImageView)v.findViewById(R.id.cadetLogo);
+
+        sequence.addSequenceItem(imageView, "Welcome to the 105 RCACC application", "CONTINUE");
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(getActivity())
+                .setTarget(getToolbarNavigationButton(MainActivity.toolbar))
+                .setContentText("Open the side drawer to access various resources")
+                .setDismissText("GOT IT")
+                .setListener(new IShowcaseListener() {
+                    @Override
+                    public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                    }
+
+                    @Override
+                    public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
+                        final Handler handler1 = new Handler();
+                        handler1.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                MainActivity.drawer.openDrawer(Gravity.LEFT);
+                            }
+                        }, 150);
+
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                MainActivity.drawer.closeDrawer(Gravity.LEFT);
+
+                                ShowcaseConfig config2 = new ShowcaseConfig();
+                                config2.setDelay(200);
+                                final MaterialShowcaseSequence sequence2 = new MaterialShowcaseSequence(getActivity(), "HOMESEQ2");
+                                sequence2.setConfig(config2);
+
+                                sequence2.addSequenceItem(contact, "Send me a message with questions or suggestions", "OK");
+
+                                sequence2.addSequenceItem(rate, "If you like the app, leave me a rating", "GOT IT");
+
+                                sequence2.addSequenceItem(imageView, "Enjoy the application", "FINISH");
+
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        sequence2.start();
+                                    }
+                                }, 250);
+                            }
+                        }, 1250);
+
+                    }
+                }).build());
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sequence.start();
+            }
+        }, 75);
+
         return v;
+    }
+
+    public ImageButton getToolbarNavigationButton(Toolbar toolbar) {
+        int size = toolbar.getChildCount();
+        for (int i = 0; i < size; i++) {
+            View child = toolbar.getChildAt(i);
+            if (child instanceof ImageButton) {
+                ImageButton btn = (ImageButton) child;
+                if (btn.getDrawable() == toolbar.getNavigationIcon()) {
+                    return btn;
+                }
+            }
+        }
+        return null;
     }
 
 
