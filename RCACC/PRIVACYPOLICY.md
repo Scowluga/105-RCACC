@@ -11,9 +11,6 @@
        Service. I will not use or share your information with anyone except as described
        in this Privacy Policy.
     </p>
-    <p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible
-       at The World's Most Beautiful App unless otherwise defined in this Privacy Policy.
-    </p>
     <p><strong>Information Collection and Use</strong></p>
     <p>This app does not save, collect, or distribute any information in any way. </p>
     <p><strong>Log Data</strong></p>
