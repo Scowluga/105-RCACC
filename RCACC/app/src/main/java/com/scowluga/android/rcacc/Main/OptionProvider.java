@@ -2,6 +2,7 @@ package com.scowluga.android.rcacc.Main;
 
 import com.scowluga.android.rcacc.About.HistoryFrag;
 import com.scowluga.android.rcacc.About.TeamFrag;
+import com.scowluga.android.rcacc.CadetResources.Starlevel.StarFragment;
 import com.scowluga.android.rcacc.Info.InfoFrag;
 import com.scowluga.android.rcacc.Join.JoinFrag;
 import com.scowluga.android.rcacc.Message.MessageDisplay;
@@ -59,8 +60,8 @@ public class OptionProvider {
         // Goodbye 7 years of code :(
         //navOptions.add(new GroupOption("Events", new ArrayList<ChildOption>(), R.drawable.events, true, new EventDisplay(), true, false));
 
-
-
+        // Remind
+        navOptions.add(new GroupOption("Remind Access", new ArrayList<ChildOption>(), R.drawable.announcement, true, new NewsFragment(), false, false));
 
         // ABOUT 105
         List<ChildOption> aboutList = new ArrayList<>();
@@ -74,8 +75,8 @@ public class OptionProvider {
         // implement later
         //resList.add(new ChildOption("Summer Training", R.drawable.sun));
         //resList.add(new ChildOption("Documents", R.drawable.documents));
-        resList.add(new ChildOption("Remind", R.drawable.announcement, new NewsFragment(), false));
-        resList.add(new ChildOption("Absence Reporting", R.drawable.phone, Website.newInstance(ABSENCE_URL), true));
+        resList.add(new ChildOption("Absence Reporting", R.drawable.phone, Website.newInstance(ABSENCE_URL), false));
+        resList.add(new ChildOption("By Star Level", R.drawable.star, new StarFragment(), false));
         resList.add(new ChildOption("Summer Training", R.drawable.sun, Website.newInstance(SUMMER_URL), true));
         if (isStaff) {resList.add(new ChildOption("Uniform Inspections", R.drawable.uniform, Website.newInstance(UNIFORM_URL), true)); }; // uniform inspections GAS
         navOptions.add(new GroupOption("Resources", resList, R.drawable.documents, false, null, false, true));
@@ -91,7 +92,7 @@ public class OptionProvider {
                 Website.newInstance("http://www.105armycadets.ca/main/"), true));
         findList.add(new ChildOption(instagram, R.drawable.camera,
                 Website.newInstance("https://www.instagram.com/105army/"), true));
-        navOptions.add(new GroupOption("Find Us Online", findList, R.drawable.computer, false, null, false, true));
+        navOptions.add(new GroupOption("Social Media", findList, R.drawable.computer, false, null, false, true));
 
         navOptions.add(new GroupOption("Join", new ArrayList<ChildOption>(), R.drawable.personplus, true, new JoinFrag(), false, false));
 

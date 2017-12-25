@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <!--Sync Adapter-->
     <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
     <!-- Required to enable our SyncAdapter after it's created. -->
@@ -37,6 +40,16 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
+
+        <provider
+            android:name=".CadetResources.Starlevel.GenericFileProvider"
+            android:authorities="${applicationId}STARLEVEL"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
         <!--<provider-->
             <!--android:authorities="com.scowluga.android.rcacc"-->
