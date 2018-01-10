@@ -1,24 +1,32 @@
 package com.scowluga.android.rcacc.CadetResources.Starlevel;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.scowluga.android.rcacc.Main.MainActivity;
 import com.scowluga.android.rcacc.R;
 
 import java.io.File;
@@ -27,9 +35,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static com.scowluga.android.rcacc.Main.MainActivity.MY_PERMISSIONS_REQUEST_STORAGE;
+
 
 public class StarFragment extends Fragment {
-
 
     String[] names = {"green", "red", "silver", "gold", "master"};
     public StarFragment() {
@@ -42,6 +51,16 @@ public class StarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.star_fragment, container, false);
+
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) { // NOT GRANTED
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_STORAGE);
+        }
+
+
 
         final TabLayout tabs = (TabLayout)v.findViewById(R.id.tabLayout);
         ViewPager pager = (ViewPager)v.findViewById(R.id.viewPager);
@@ -57,11 +76,19 @@ public class StarFragment extends Fragment {
         IG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int i = tabs.getSelectedTabPosition();
-                if (i >= 0 && i < 5) {
-                    openPdf(names[i] + "ig");
+                if (ContextCompat.checkSelfPermission(getContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) { // NOT GRANTED
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_STORAGE);
                 } else {
-                    Toast.makeText(getActivity(), "Please select a star level", Toast.LENGTH_SHORT).show();
+                    int i = tabs.getSelectedTabPosition();
+                    if (i >= 0 && i < 5) {
+                    } else {
+                        Toast.makeText(getActivity(), "Please select a star level", Toast.LENGTH_SHORT).show();
+                    }
+                        openPdf(names[i] + "ig");
                 }
             }
         });
@@ -69,18 +96,24 @@ public class StarFragment extends Fragment {
         QSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int i = tabs.getSelectedTabPosition();
-                if (i >= 0 && i < 5) {
-                    openPdf(names[i] + "qsp");
+                if (ContextCompat.checkSelfPermission(getContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) { // NOT GRANTED
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_STORAGE);
                 } else {
-                    Toast.makeText(getActivity(), "Please select a star level", Toast.LENGTH_SHORT).show();
+                    int i = tabs.getSelectedTabPosition();
+                    if (i >= 0 && i < 5) {
+                        openPdf(names[i] + "qsp");
+                    } else {
+                        Toast.makeText(getActivity(), "Please select a star level", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
         return v;
     }
-
-
 
     private void openPdf(String filename) {
         File file = new File(Environment.getExternalStorageDirectory() + "/" + filename + ".pdf");

@@ -1,19 +1,24 @@
 package com.scowluga.android.rcacc.Main;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -31,6 +36,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final int MY_PERMISSIONS_REQUEST_STORAGE = 1;
+    public static final String PRIVACY_POLICY = "https://github.com/Scowluga/105-RCACC/blob/master/RCACC/PRIVACYPOLICY.md";
 
     public static final String TAGFRAGMENT = "Tagfragment";
     public static ExpandableListView expList;
@@ -258,4 +266,46 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_STORAGE:
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // allowed
+
+                } else { // not allowed
+                    final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                    alertDialog.setTitle("Sorry");
+                    alertDialog.setMessage("We require permission to open cadet instructional guides.");
+//                    alertDialog.setIcon();
+                    alertDialog.setCancelable(false);
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    ActivityCompat.requestPermissions(MainActivity.this,
+                                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                            MY_PERMISSIONS_REQUEST_STORAGE);
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Why", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_POLICY));
+                            startActivity(intent);
+                        }
+                    });
+                    alertDialog.show();
+                }
+
+        }
+    }
 }
